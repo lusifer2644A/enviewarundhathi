@@ -8,16 +8,26 @@ const Alerts = ({ alerts, setAlerts, handleFetchAlerts }) => {
             <div className="px-6 py-6 border-b-2 border-gray-500 text-xl font-medium text-gray-800">
                 Alerts
             </div>
-            <div>
-                {alerts.map((item, key) => (
-                    <DriverCard
-                        data={item}
-                        setAlertsState={setAlerts}
-                        handleFetchAlerts={handleFetchAlerts}
-                        key={key}
+            {alerts.length ? (
+                <div>
+                    {alerts.map((item, key) => (
+                        <DriverCard
+                            data={item}
+                            setAlertsState={setAlerts}
+                            handleFetchAlerts={handleFetchAlerts}
+                            key={key}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <div className="w-full h-60 relative p-10">
+                    <img
+                        src="/no-search-found.png"
+                        className="w-full h-full object-contain relative"
+                        alt=""
                     />
-                ))}
-            </div>
+                </div>
+            )}
         </div>
     );
 };
